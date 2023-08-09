@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { AppShell, Navbar, Header } from "@mantine/core";
+
+import EditStudyPlanner from "./part/edit-planner";
+// import Calender from "./part/calender";
+import AddStudyPlanner from "./part/add-planner";
+import ManagePlanner from "./part/manage-planner";
+import Dashboard from "./part/dashboard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/edit-planner/:id" element={<EditStudyPlanner />} />
+        <Route path="/add-planner" element={<AddStudyPlanner />} />
+        {/* <Route path="/calender" element={<Calender />} /> */}
+        <Route path="/manage-planner" element={<ManagePlanner />} />
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 
