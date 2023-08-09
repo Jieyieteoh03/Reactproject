@@ -12,12 +12,14 @@ import Placeholder from "@tiptap/extension-placeholder";
 import { IconClock } from "@tabler/icons-react";
 import { TimeInput } from "@mantine/dates";
 import { Space } from "@mantine/core";
+import { DatePickerInput } from "@mantine/dates";
 
 export default function EditStudyPlanner() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [date, setDate] = useState(null);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
 
@@ -33,6 +35,8 @@ export default function EditStudyPlanner() {
       setContent(plan.content);
       setStartTime(plan.startTime);
       setEndTime(plan.endTime);
+      setDate(new Date(plan.date));
+      console.log(plan.date);
     }
   }, []);
 
@@ -62,6 +66,14 @@ export default function EditStudyPlanner() {
         p.content = content;
         p.startTime = startTime;
         p.endTime = endTime;
+
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let updatedDate = new Date(`${year}-${month}-${day}`);
+        updatedDate.setHours(11, 5);
+
+        p.date = updatedDate;
       }
       return p;
     });
@@ -145,6 +157,18 @@ export default function EditStudyPlanner() {
                 onChange={(event) => {
                   setEndTime(event.target.value);
                 }}
+              />
+              <Space w="xl" />
+              <DatePickerInput
+                value={date}
+                onChange={(newValue) => {
+                  console.log(newValue);
+                  setDate(newValue);
+                }}
+                label="Date input"
+                placeholder="Date input"
+                maw={400}
+                mx="end"
               />
             </div>
 
