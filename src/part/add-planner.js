@@ -12,14 +12,14 @@ import TextAlign from "@tiptap/extension-text-align";
 import Placeholder from "@tiptap/extension-placeholder";
 import { IconClock } from "@tabler/icons-react";
 import { TimeInput } from "@mantine/dates";
-// import { DatePickerInput } from "@mantine/dates";
+import { DatePickerInput } from "@mantine/dates";
 import { Space } from "@mantine/core";
 
 export default function AddStudyPlanner() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  // const [date, setDate] = (useState < Date) | (null > null);
+  const [date, setDate] = useState(null);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const editor = useEditor({
@@ -45,7 +45,7 @@ export default function AddStudyPlanner() {
       id: Math.floor(Math.random() * 100000),
       title: title,
       content: content,
-      // date: date,
+      date: date,
       startTime: startTime,
       endTime: endTime,
     });
@@ -132,16 +132,16 @@ export default function AddStudyPlanner() {
                 }}
               />
               <Space w="xl" />
-              {/* <DatePickerInput
+              <DatePickerInput
                 value={date}
-                onChange={(event) => {
-                  setDate(event.target.value);
+                onChange={(newValue) => {
+                  setDate(newValue);
                 }}
                 label="Date input"
                 placeholder="Date input"
                 maw={400}
                 mx="end"
-              /> */}
+              />
             </div>
 
             <div className="text-end mt-3">

@@ -36,7 +36,7 @@ export default function ManagePlanner() {
               <th scope="col">Content</th>
               <th scope="col">Start Time</th>
               <th scope="col">End Time</th>
-              {/* <th scope="col">Date</th> */}
+              <th scope="col">Date</th>
               <th scope="col" className="text-end">
                 Actions
               </th>
@@ -55,7 +55,7 @@ export default function ManagePlanner() {
                       />
                       <td>{plan.startTime}</td>
                       <td>{plan.endTime}</td>
-                      {/* <td>{plan.date}</td> */}
+                      <td>{plan.date.slice(0, 10)}</td>
                       <td className="text-end">
                         <div className="buttons">
                           {/* <Link
